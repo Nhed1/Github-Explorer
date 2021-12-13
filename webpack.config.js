@@ -35,7 +35,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 exclude: /node_modules/,
-                use: ['babel-loader', 'css-loader'],
+                use: ['style-loader', 'css-loader'],
             }
         ],
     }
