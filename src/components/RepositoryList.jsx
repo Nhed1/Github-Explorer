@@ -1,9 +1,7 @@
+import { useState, useEffect } from "react";
 import { RepositoryItem } from "./RepositoryItem";
 
 import '../styles/repositories.scss';
-import { useState } from "react/cjs/react.development";
-
-// https://api.github.com/orgs/rocketseat/repos
 
 const repository = {
     name: "unform",
@@ -12,7 +10,15 @@ const repository = {
 }
 
 export function RepositoryList(){
-    const [] = useState([])
+    const [repositories, setRepositories] = useState([])
+
+    // primeiro parametro = a funcao que vai executar
+    // o segundo e quando ela ira executar
+    useEffect(() => {
+    fetch('https://api.github.com/orgs/rocketseat/repos')
+        .then(response => response.json())
+        .then(data => setRepositories(data))
+    }, []);
 
     return (
         <section className="repository-list">
